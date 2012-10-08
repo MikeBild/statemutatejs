@@ -12,11 +12,13 @@
   },
   "main": "./lib/statemutate.js",
   "scripts": {
-    "test": "vows --spec --isolate"
+    "test": "vows test/* --spec --isolate"
   },
   "dependencies": {
   },
   "devDependencies": {
-    "vows": "0.6.x"
-  }
+    "vows": "0.6.x",
+    "assert" : "0.4.x"
+  },
+  "license": "MIT"
 }
