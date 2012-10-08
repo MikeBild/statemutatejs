@@ -1,23 +1,36 @@
-var sm = require('../lib/statemutate.js');
+var sm = require('../lib/statemutate.js'),
+	fa = require('./fileadapter.js');
 
-var projection = new sm.Projections();
-
-var model = {
+// prepare data file
+// fa.save('data.json',[{payload : 'One'}, {payload:'Two'}, {payload:'Three',value : 3}, {payload:'Four'}]);
+var simpleModel = {
 	text: '',
 	valueSum: 0
 }
-var data = projection
-		.arrange([{payload : 'One'}, new projection.Message('','Two'), {payload:'Three', value : 3},{payload:'Four'}])
-		.append({payload : 'Last', value : -1})
-		.for(model)
-		.with(function(state, message) {
-			state.text += message.payload + ' ';
-			state.valueSum += message.value || 0;
-			return state;
-		})
-		.perform(function(message){
-			console.log('Step: ');
-			console.log(message);
-		});
-console.log('Final result:')
-console.log(data);
+
+performSimpleProjection(simpleModel, function(model) {
+	console.log('Final result:');
+	console.log(model);
+});
+
+
+function performSimpleProjection(model, callback){
+	var projection = new sm.Projections();
+	
+	fa.load('./data.json', function(data) {
+		projection
+			.arrange(data)
+			.append({payload : 'Last', value : -1})
+			.for(model)
+			.with(function(state, message) {
+				state.text += message.payload + ' ';
+				state.valueSum += message.value || 0;
+				return state;
+			})
+			.perform(function(message){
+				console.log('Step: ');
+				console.log(message);
+			});
+		callback(model);
+	});
+}
