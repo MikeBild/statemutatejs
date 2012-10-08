@@ -1,0 +1,20 @@
+{
+  "name": "statemutatejs",
+  "version": "0.1.0",
+  "author": {
+    "name": "Mike Bild",
+    "email": "mike.bild@googlemail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MikeBild/statemutatejs.git"
+  },
+  "scripts": {
+    "test": "vows --spec --isolate"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "vows": "0.6.x"
+  }
+}
