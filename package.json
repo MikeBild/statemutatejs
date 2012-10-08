@@ -1,14 +1,16 @@
 {
-  "name": "statemutatejs",
-  "version": "0.1.0",
+  "name": "statemutate.js",
+  "version": "0.0.1",
+  "description": "simple projection functions, alias foldl, that mutate state on a stream of elements",
   "author": {
     "name": "Mike Bild",
-    "email": "mike.bild@googlemail.com"
+    "email": "info@mikebild.com"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/MikeBild/statemutatejs.git"
   },
+  "main": "./lib/statemutate.js",
   "scripts": {
     "test": "vows --spec --isolate"
   },
