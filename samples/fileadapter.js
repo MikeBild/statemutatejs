@@ -8,8 +8,7 @@ function save(filename, data) {
 
 function load(filename, callback) {
 	fs.readFile(filename, function (err, data) {
-		if (err) throw err;
-		callback(JSON.parse(data));
+		callback(err, JSON.parse(data));
 	});
 }
 exports.save = save;

@@ -17,7 +17,7 @@ performSimpleProjection(simpleModel, function(model) {
 function performSimpleProjection(model, callback){
 	var projection = new sm.Projections();
 	
-	fa.load('./data.json', function(data) {
+	fa.load('./data.json', function(err, data) {
 		projection
 			.arrange(data)
 			.append({payload : 'Last', value : -1})
